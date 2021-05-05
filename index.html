@@ -20,7 +20,7 @@
         <br>
         <button v-on:click="HideTable()" id="hideTableButton" >Hide table</button>
         <button v-on:click="ShowTable()" id="showTableButton" >Show table</button>
-        <table id="pirListe" class="table table-dark table-striped" style="width: 50%">
+        <table id="pirListe" v-if="motions.length" class="table table-dark table-striped" style="width: 50%">
             <thead class="thead-light">
                 <tr>
                     <th v-for="(item, index) in motions[0]">{{index}}</th>
