@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="Description" content="Enter your description here"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="https://unpkg.com/vue@next"></script>
-<title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Title</title>
 </head>
+
 <body>
     <h1>Motion Detections</h1>
     <div id="app">
-        <h2>Get all motions</h2>
-        <button v-on:click="getAllMotions()" class="btn btn-success">Get all motions</button>
-        <br>
-        <br>
-        <button v-on:click="HideTable()" id="hideTableButton" >Hide table</button>
-        <button v-on:click="ShowTable()" id="showTableButton" >Show table</button>
-        <table id="pirListe" v-if="motions.length" class="table table-dark table-striped" style="width: 50%">
-            <thead class="thead-light">
-                <tr>
-                    <th v-for="(item, index) in motions[0]">{{index}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="row in motions">
-                    <td v-for="motion in row">{{motion}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div id="Sensors">
 
-      </div>
+        </div>
+        <div id="Motions">
+            <h2>Get all motions</h2>
+            <button v-on:click="getAllMotions()" class="btn btn-success">Get all motions</button>
+            <br>
+            <br>
+            <button v-on:click="HideTable()" id="hideTableButton">Hide table</button>
+            <button v-on:click="ShowTable()" id="showTableButton">Show table</button>
+            <table id="pirListe" v-if="motions.length" class="table table-dark table-striped" style="width: 50%">
+                <thead class="thead-light">
+                    <tr>
+                        <th v-for="(item, index) in motions[0]">{{index}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="row in motions">
+                        <td v-for="motion in row">{{motion}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <script src="js/index.js"></script>
 </body>
+
 </html>
