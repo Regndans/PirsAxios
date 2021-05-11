@@ -1,23 +1,29 @@
-const baseUrl = "https://restsense.azurewebsites.net/api/pir/"
+const motionUrl = "https://restsense.azurewebsites.net/api/Motion/"
+const sensorUrl = "https://restsense.azurewebsites.net/api/sensor/"
 
 
 Vue.createApp({
     data() {
         return {
-            motions: [],
+            motions:[],
+            sensors:[],
         }
     },
     
         async created(){
             console.log("Created method called")
-            this.helperGet(baseUrl)
+            this.helperGetMotions(motionUrl)
+            this.helperGetSensors(sensorUrl)
         },
     
     methods: {
         getAllMotions() {
-            this.helperGet(baseUrl)
+            this.helperGetMotions(motionUrl)
         },
-        async helperGet(url) {
+        getAllSensors() {
+            this.helperGetSensors(sensorUrl)
+        },
+        async helperGetMotions(url) {
             try {
                 const response = await axios.get(url)
                 this.motions = await response.data
@@ -26,12 +32,21 @@ Vue.createApp({
                 alert(ex.message)
             }
         },
-        HideTable(){
+        async helperGetSensors(url) {
+            try {
+                const reponse = await axios.get(url)
+                this.sensors = await reponse.data
+            } catch (ex) {
+                alert(ex.message)
+            }
+        },
+        HideMotionTable(){
             this.motions = []
         },
-        ShowTable(){
-            this.helperGet(baseUrl)
-        }
+        ShowMotionTable(){
+            this.helperGetMotions(motionUrl)
+        },
+        
     }
      
     }).mount("#app")
