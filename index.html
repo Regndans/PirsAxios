@@ -18,14 +18,25 @@
     <h1>Motion Detections</h1>
     <div id="app">
         <div id="Sensors">
-
+            <table id="sensorList" v-if="sensors.length" class="table table-dark table-striped" style="width: 50%">
+                <thead class="thead-light">
+                    <tr>
+                        <th v-for="(value, sensorName) in sensors[0]">{{sensorName}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="row in sensors">
+                        <td v-for="sensor in row">{{sensor}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div id="Motions">
             <h2>Get all motions</h2>
             <button v-on:click="getAllMotions()" class="btn btn-success">Get all motions</button>
             <br>
             <br>
-            <button v-on:click="HideTable()" id="hideTableButton">Hide table</button>
+            <button v-on:click="HideMotionTable()" id="hideTableButton">Hide table</button>
             <button v-on:click="ShowTable()" id="showTableButton">Show table</button>
             <table id="pirListe" v-if="motions.length" class="table table-dark table-striped" style="width: 50%">
                 <thead class="thead-light">
