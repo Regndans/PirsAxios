@@ -1,0 +1,11 @@
+
+:root{
+    --STDC:#F4FF81;
+    --SC: #FFD600;
+    --HighlightC: #DE3163;
+}
+
+body{
+    background-color: var(--STDC);
+}
+
