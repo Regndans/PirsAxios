@@ -16,3 +16,11 @@ body{
 .table{
     background-color: var(--HighlightC);
 }
+
+.btn{
+    background-color: var(--HighlightC);
+}
+
+.btn:hover{
+    background-color: var(--SC);
+}

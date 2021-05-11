@@ -43,8 +43,8 @@
             <button v-on:click="getAllMotions()" class="btn btn-success">Get all motions</button>
             <br>
             <br>
-            <button v-on:click="HideMotionTable()" id="hideTableButton">Hide table</button>
-            <button v-on:click="ShowMotionTable()" id="showTableButton">Show table</button>
+            <button class="btn btn-success" v-on:click="HideMotionTable()" id="hideTableButton">Hide table</button>
+            <button class="btn btn-success" v-on:click="ShowMotionTable()" id="showTableButton">Show table</button>
             <table id="pirListe" v-if="motions.length" class="table table-dark table-striped" style="width: 50%">
                 <thead class="thead-dark">
                     <tr>
