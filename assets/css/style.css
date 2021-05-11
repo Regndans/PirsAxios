@@ -9,3 +9,10 @@ body{
     background-color: var(--STDC);
 }
 
+.jumbotron{
+    background-color: var(--STDC);
+}
+
+.table{
+    background-color: var(--HighlightC);
+}

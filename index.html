@@ -15,13 +15,17 @@
 </head>
 
 <body>
-    
-    <h1>Sense WebApp</h1>
+    <div class="jumbotron jumbotron-fluid">
+        <h1 class="display-4">Sense WebApp</h1>
+        <p class="lead">A Regndans production</p>
+        <hr class="my-4">
+        <p>gruppe projekt lavet til gruppe Blå</p>
+    </div>
     <div id="app">
         <h2>Sensors</h2>
         <div id="Sensors">
             <table id="sensorList" v-if="sensors.length" class="table table-dark table-striped" style="width: 50%">
-                <thead class="thead-light">
+                <thead class="thead-dark">
                     <tr>
                         <th v-for="(value, sensorName) in sensors[0]">{{sensorName}}</th>
                     </tr>
@@ -40,9 +44,9 @@
             <br>
             <br>
             <button v-on:click="HideMotionTable()" id="hideTableButton">Hide table</button>
-            <button v-on:click="ShowTable()" id="showTableButton">Show table</button>
+            <button v-on:click="ShowMotionTable()" id="showTableButton">Show table</button>
             <table id="pirListe" v-if="motions.length" class="table table-dark table-striped" style="width: 50%">
-                <thead class="thead-light">
+                <thead class="thead-dark">
                     <tr>
                         <th v-for="(item, index) in motions[0]">{{index}}</th>
                     </tr>
@@ -54,6 +58,7 @@
                 </tbody>
             </table>
         </div>
+        <button v-on:click="Switchtruefalse(1)" class="btn btn-success">switch</button>
     </div>
 
     <script src="js/index.js"></script>
