@@ -24,7 +24,8 @@
     <div id="app">
         <h2>Sensors</h2>
         <div id="Sensors">
-            <button v-on:click="TurnSensorsOn()" class="btn btn-success">Turn all sensors on</button><button v-on:click="TurnSensorsOff()" class="btn btn-success">Turn all sensors off</button>
+            <button id="onButton" v-on:click="TurnSensorsOn()" class="btn btn-success">Turn all sensors on</button>
+            <button id="offButton" v-on:click="TurnSensorsOff()" class="btn btn-success">Turn all sensors off</button>
             <table id="sensorList" v-if="sensors.length" class="table table-dark table-striped" style="width: 50%">
                 <thead class="thead-dark">
                     <tr>
