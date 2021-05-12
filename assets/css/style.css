@@ -19,8 +19,10 @@ body{
 
 .btn{
     background-color: var(--HighlightC);
+    border-color: var(--STDC);
 }
 
 .btn:hover{
     background-color: var(--SC);
+    border-color: var(--STDC);
 }
