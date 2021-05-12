@@ -28,13 +28,13 @@
             <table id="sensorList" v-if="sensors.length" class="table table-dark table-striped" style="width: 50%">
                 <thead class="thead-dark">
                     <tr>
-                        <th v-for="(value, sensorName) in sensors[0]">{{sensorName}}</th>
+                        <th v-for="(value, varname) in sensors[0]">{{varname}}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="row in sensors">
                         <td v-for="sensor in row">{{sensor}}</td>
-                        <td><button v-on:click="Switchtruefalse(sensor.sensorId)" class="btn btn-success">switch</button></td>
+                        <!--td v-for="(sensor, index) in sensors"><button v-on:click="Switchtruefalse(sensor.sensorId)" class="btn btn-success">switch</button></td-->
                     </tr>
                 </tbody>
             </table>
