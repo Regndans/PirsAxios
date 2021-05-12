@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
-    <title>Title</title>
+    <title>Sense</title>
 </head>
 
 <body>
@@ -24,17 +24,21 @@
     <div id="app">
         <h2>Sensors</h2>
         <div id="Sensors">
-            <button v-on:click="Switchtruefalse(1)" class="btn btn-success">switch</button>
+            <button v-on:click="TurnSensorsOn()" class="btn btn-success">Turn all sensors on</button><button v-on:click="TurnSensorsOff()" class="btn btn-success">Turn all sensors off</button>
             <table id="sensorList" v-if="sensors.length" class="table table-dark table-striped" style="width: 50%">
                 <thead class="thead-dark">
                     <tr>
-                        <th v-for="(value, varname) in sensors[0]">{{varname}}</th>
+                        <th>Name</th>
+                        <th>Active</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="row in sensors">
-                        <td v-for="sensor in row">{{sensor}}</td>
-                        <!--td v-for="(sensor, index) in sensors"><button v-on:click="Switchtruefalse(sensor.sensorId)" class="btn btn-success">switch</button></td-->
+                    <tr v-for="(ss,i) in sensors" :key="i">
+                        <td>{{ss.sensorName}}</td>
+                        <td>{{ss.active}}</td>
+                        
+                        <td><button v-on:click="Switchtruefalse(ss.sensorId)" class="btn btn-success">switch</button></td>
                     </tr>
                 </tbody>
             </table>

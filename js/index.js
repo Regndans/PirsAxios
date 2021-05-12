@@ -65,6 +65,36 @@ Vue.createApp({
             }
             this.helperGetSensors(sensorUrl)
         },
+        //method for switching sensors off
+        async TurnSensorsOff() {
+            try {
+                for (let index = 0; index < this.sensors.length; index++) {
+                    const element = this.sensors[index];
+                    if (element.active) {
+                        element.active = false
+                        const response = await axios.put(sensorUrl + element.sensorId+"?key=4000", element)
+                    }
+                }
+            } catch (ex) {
+                alert(ex.message)
+            }
+            this.helperGetSensors(sensorUrl)
+        },
+        //method for switching sensors on
+        async TurnSensorsOn() {
+            try {
+                for (let index = 0; index < this.sensors.length; index++) {
+                    const element = this.sensors[index];
+                    if (!element.active) {
+                        element.active = true
+                        const response = await axios.put(sensorUrl + element.sensorId+"?key=4000", element)
+                    }
+                }
+            } catch (ex) {
+                alert(ex.message)
+            }
+            this.helperGetSensors(sensorUrl)
+        },
         //method to get a single sensor
         async helperGetSensor(url,id) {
             try {
