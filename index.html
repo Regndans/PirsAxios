@@ -24,6 +24,7 @@
     <div id="app">
         <h2>Sensors</h2>
         <div id="Sensors">
+            <button v-on:click="Switchtruefalse(1)" class="btn btn-success">switch</button>
             <table id="sensorList" v-if="sensors.length" class="table table-dark table-striped" style="width: 50%">
                 <thead class="thead-dark">
                     <tr>
@@ -33,6 +34,7 @@
                 <tbody>
                     <tr v-for="row in sensors">
                         <td v-for="sensor in row">{{sensor}}</td>
+                        <td><button v-on:click="Switchtruefalse(sensor.sensorId)" class="btn btn-success">switch</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -44,7 +46,7 @@
             <br>
             <br>
             <button class="btn btn-success" v-on:click="HideMotionTable()" id="hideTableButton">Hide table</button>
-            <button class="btn btn-success" v-on:click="ShowMotionTable()" id="showTableButton">Show table</button>
+            <button class="btn btn-success" v-on:click="getAllMotions()" id="showTableButton">Show table</button>
             <table id="pirListe" v-if="motions.length" class="table table-dark table-striped" style="width: 50%">
                 <thead class="thead-dark">
                     <tr>
@@ -58,7 +60,7 @@
                 </tbody>
             </table>
         </div>
-        <button v-on:click="Switchtruefalse(1)" class="btn btn-success">switch</button>
+        
     </div>
 
     <script src="js/index.js"></script>
