@@ -46,21 +46,22 @@
         </div>
         <div id="Motions">
             <h2>Motion Detections</h2>
-            <h4>Get all motions</h4>
-            <button v-on:click="getAllMotions()" class="btn btn-success">Get all motions</button>
-            <br>
-            <br>
-            <button class="btn btn-success" v-on:click="HideMotionTable()" id="hideTableButton">Hide table</button>
-            <button class="btn btn-success" v-on:click="getAllMotions()" id="showTableButton">Show table</button>
+            <button class="btn btn-success" v-on:click="HideMotionTable()" id="hideTableButton">Hide motions</button>
+            <button class="btn btn-success" v-on:click="GetAllMotions()" id="showTableButton">Show motions</button>
             <table id="pirListe" v-if="motions.length" class="table table-dark table-striped" style="width: 50%">
                 <thead class="thead-dark">
                     <tr>
-                        <th v-for="(item, index) in motions[0]">{{index}}</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Time of detection</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="row in motions">
-                        <td v-for="motion in row">{{motion}}</td>
+                    <tr v-for="(mm,i) in motions" :key="i" >
+                        <td >{{DetermineName(mm.sensorId)}}</td>
+                        <td>{{mm.status}}</td>
+                        <td>{{mm.timeOfDetection}}</td>
+                        
                     </tr>
                 </tbody>
             </table>

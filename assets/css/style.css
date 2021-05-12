@@ -26,3 +26,7 @@ body{
     background-color: var(--SC);
     border-color: var(--STDC);
 }
+.btn:focus{
+    background-color: var(--SC);
+    border-color: var(--STDC);
+}
