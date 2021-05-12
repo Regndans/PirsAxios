@@ -12,25 +12,25 @@ Vue.createApp({
 
     async created() {
         console.log("Created method called")
-        this.helperGetMotions(motionUrl)
-        this.helperGetSensors(sensorUrl)
+        this.HelperGetMotions(motionUrl)
+        this.HelperGetSensors(sensorUrl)
     },
 
     methods: {
         // gets all motions
-        getAllMotions() {
-            this.helperGetMotions(motionUrl)
+        GetAllMotions() {
+            this.HelperGetMotions(motionUrl)
         },
         //gets all sensors
-        getAllSensors() {
-            this.helperGetSensors(sensorUrl)
+        GetAllSensors() {
+            this.HelperGetSensors(sensorUrl)
         },
          //sets motion table to null
          HideMotionTable() {
             this.motions = []
         },
         // method for getting motions based on url
-        async helperGetMotions(url) {
+        async HelperGetMotions(url) {
             try {
                 const response = await axios.get(url)
                 this.motions = await response.data
@@ -40,7 +40,7 @@ Vue.createApp({
             }
         },
         // method for getting sensors based on url
-        async helperGetSensors(url) {
+        async HelperGetSensors(url) {
             try {
                 const reponse = await axios.get(url)
                 this.sensors = await reponse.data
@@ -51,7 +51,7 @@ Vue.createApp({
         // method for switching active on/off 
         async Switchtruefalse(id) {
             try {
-                await this.helperGetSensor(sensorUrl,id)
+                await this.HelperGetSensor(sensorUrl,id)
                 if (this.getdata.active) {
                     this.getdata.active = false
                     const response = await axios.put(sensorUrl + id+"?key=4000", this.getdata)
@@ -63,7 +63,7 @@ Vue.createApp({
             catch (ex) {
                 alert(ex.message)
             }
-            this.helperGetSensors(sensorUrl)
+            this.HelperGetSensors(sensorUrl)
         },
         //method for switching sensors off
         async TurnSensorsOff() {
@@ -78,7 +78,7 @@ Vue.createApp({
             } catch (ex) {
                 alert(ex.message)
             }
-            this.helperGetSensors(sensorUrl)
+            this.HelperGetSensors(sensorUrl)
         },
         //method for switching sensors on
         async TurnSensorsOn() {
@@ -93,16 +93,39 @@ Vue.createApp({
             } catch (ex) {
                 alert(ex.message)
             }
-            this.helperGetSensors(sensorUrl)
+            this.HelperGetSensors(sensorUrl)
         },
         //method to get a single sensor
-        async helperGetSensor(url,id) {
+        async HelperGetSensor(url,id) {
             try {
                 const reponse = await axios.get(url+id)
                 this.getdata = await reponse.data
             } catch (ex) {
                 alert(ex.message)
             }
+        },
+        //Method for determining name of sensor
+        DetermineName(sensid)
+        {
+            for(let x of this.sensors){
+                if (sensid == x.sensorId) {
+                    return x.sensorName
+                }
+            }
+            /*
+            this.sensors.forEach(element => {
+                if (sensid == element.sensorId) {
+                    return element.sensorName
+                }
+            });
+            /*
+            for (let index = 0; index < this.sensors.length; index++) {
+                const element = this.sensors[index];
+                if (sensid == element.sensorId) {
+                    return element.sensorName
+                }
+            }
+            */
         },
 
     }
