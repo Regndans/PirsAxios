@@ -1,32 +1,72 @@
 
 :root{
-    --STDC:#fffcdd;
-    --SC: #343a40;
-    --HighlightC: #DE3163;
+    --bgColour: #CEE5F2;
+    --primaryBlue: #56A5D2;
+    --secondaryBlue: #5C98BA;
+    --darkBlue: #153142;
+    --secondaryDarkBlue: #214F69;
+    --lightPink: #D474B2;
+    --purple: #97537F;
+    --darkPurple: #412638;
+    
 }
 
+/* #214F69 */
+
 body{
-    background-color: var(--STDC);
+    background-color: var(--bgColour);
 }
 
 .jumbotron{
-    background-color: var(--STDC);
+    background-color: var(--primaryBlue);
+    color: var(--darkPurple);
+    padding-left: 0.5em;
+}
+
+h1, h2, h3{
+    color: var(--darkPurple);
 }
 
 .table{
-    background-color: var(--HighlightC);
+    background-color: var(--primaryBlue);
+    vertical-align: middle;
+    margin-top: 0.2em;
 }
 
+tr th {
+    background-color: var(--darkBlue);
+}
+
+tr:nth-child(even){
+    background-color: var(--secondaryBlue);
+ }
+
 .btn{
-    background-color: var(--HighlightC);
-    border-color: var(--STDC);
+    background-color: var(--purple);
+    border-color: var(--darkPurple);
+    margin-right: 0.2em;
+}
+
+.btn-table{
+    background-color: var(--secondaryDarkBlue);
+    border-color: var(--darkBlue);
+    color: white;
+    margin-right: 0;
 }
 
 .btn:hover{
-    background-color: var(--SC);
-    border-color: var(--STDC);
+    background-color: var(--lightPink);
+    border-color: var(--purple);
 }
 .btn:focus{
-    background-color: var(--SC);
-    border-color: var(--STDC);
+    background-color: var(--secondaryDarkBlue);
+    border-color: var(--primaryBlue);
 }
+
+#app{
+    padding-left: 0.5em;
+}
+
+
+
+
