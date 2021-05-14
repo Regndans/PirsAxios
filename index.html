@@ -28,8 +28,8 @@
         </div>
         <h2>Sensors</h2>
         <div id="Sensors">
-            <button id="onButton" v-on:click="TurnSensorsOn()" class="btn btn-success">Turn all sensors on</button>
-            <button id="offButton" v-on:click="TurnSensorsOff()" class="btn btn-success">Turn all sensors off</button>
+            <button id="onButton" v-on:click="TurnSensorsOn()" class="btn">Turn all sensors on</button>
+            <button id="offButton" v-on:click="TurnSensorsOff()" class="btn">Turn all sensors off</button>
             <table id="sensorList" v-if="sensors.length" class="table table-dark table-stribed" style="width: 50%">
                 <thead class="thead">
                     <tr>
@@ -41,17 +41,17 @@
                 <tbody>
                     <tr v-for="(ss,i) in sensors" :key="i">
                         <td>{{ss.sensorName}}</td>
-                        <td>{{ss.active}}</td>
+                        <td>{{SensorOnOff(ss.active)}}</td>
                         
-                        <td><button v-on:click="Switchtruefalse(ss.sensorId)" class="btn btn-table">switch</button></td>
+                        <td><button v-on:click="Switchtruefalse(ss.sensorId)" class="btn btn-table"><i class="fas fa-power-off"></i></button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div id="Motions">
             <h2>Motion Detections</h2>
-            <button class="btn btn-success" v-on:click="HideMotionTable()" id="hideTableButton">Hide motions</button>
-            <button class="btn btn-success" v-on:click="GetAllMotions()" id="showTableButton">Show motions</button>
+            <button class="btn" v-on:click="HideMotionTable()" id="hideTableButton">Hide motions</button>
+            <button class="btn" v-on:click="GetAllMotions()" id="showTableButton">Show motions</button>
             <table id="pirListe" v-if="motions.length" class="table table-dark table-striped" style="width: 50%">
                 <thead class="thead">
                     <tr>
@@ -64,7 +64,7 @@
                     <tr v-for="(mm,i) in motions" :key="i" >
                         <td >{{DetermineName(mm.sensorId)}}</td>
                         <td>{{mm.status}}</td>
-                        <td>{{mm.timeOfDetection}}</td>
+                        <td>{{FormatTime(mm.timeOfDetection)}}</td>
                         
                     </tr>
                 </tbody>
