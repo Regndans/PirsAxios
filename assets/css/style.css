@@ -30,7 +30,7 @@ h1, h2, h3{
 .table{
     background-color: var(--primaryBlue);
     vertical-align: middle;
-    margin-top: 0.2em;
+    margin-top: 0.2rem;
     min-width: 70%;
 }
 
@@ -45,7 +45,7 @@ tr:nth-child(even){
 .btn{
     background-color: var(--purple);
     border-color: var(--darkPurple);
-    margin-right: 0.2em;
+    margin-right: 0.2rem;
 }
 
 .btn-table{
