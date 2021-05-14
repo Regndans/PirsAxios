@@ -6,9 +6,14 @@ Vue.createApp({
         return {
             motions: [],
             sensors: [],
-            getdata: null 
+            getdata: null,
+            timerStart: new Date(Date.now()).toISOString().substr(0,16),
+            timerEnd: null,
+            timerEndReal: new Date(Date.now()).toISOString().substr(0,16),
         }
     },
+
+    
 
     async created() {
         console.log("Created method called")
@@ -127,7 +132,6 @@ Vue.createApp({
             }
             */
         },
-
     }
 
 }).mount("#app")

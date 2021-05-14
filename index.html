@@ -22,6 +22,10 @@
         <p>gruppe projekt lavet til gruppe Blå</p>
     </div>
     <div id="app">
+        <div id="Timer">
+            <input type="datetime-local" name="timerStart" id="timerStart" v-model="timerStart">
+            <input type="datetime-local" name="timerEndReal" id="timerEndReal" v-model="timerEndReal">
+        </div>
         <h2>Sensors</h2>
         <div id="Sensors">
             <button id="onButton" v-on:click="TurnSensorsOn()" class="btn btn-success">Turn all sensors on</button>
