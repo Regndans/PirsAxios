@@ -46,6 +46,7 @@ tr:nth-child(even){
     background-color: var(--purple);
     border-color: var(--darkPurple);
     margin-right: 0.2rem;
+    color: white;
 }
 
 .btn-table{
@@ -60,8 +61,7 @@ tr:nth-child(even){
     border-color: var(--purple);
 }
 .btn:focus{
-    background-color: var(--secondaryDarkBlue);
-    border-color: var(--primaryBlue);
+    border-color: var(--lightPink);
 }
 
 #app{

@@ -132,6 +132,19 @@ Vue.createApp({
             }
             */
         },
+
+        SensorOnOff (on)
+        {
+            if(on){return "On"}
+            else return "Off"
+        },
+
+        FormatTime (time)
+        {
+            date = new Date(time).toLocaleDateString("en-DK");
+            time = new Date(time).toLocaleTimeString("en-DK").replace(".",":").substr(0,5)
+            return date + " kl. " + time
+        },
     }
 
 }).mount("#app")
