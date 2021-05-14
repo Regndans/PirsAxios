@@ -26,8 +26,8 @@
         <div id="Sensors">
             <button id="onButton" v-on:click="TurnSensorsOn()" class="btn btn-success">Turn all sensors on</button>
             <button id="offButton" v-on:click="TurnSensorsOff()" class="btn btn-success">Turn all sensors off</button>
-            <table id="sensorList" v-if="sensors.length" class="table table-dark table-striped" style="width: 50%">
-                <thead class="thead-dark">
+            <table id="sensorList" v-if="sensors.length" class="table table-dark table-stribed" style="width: 50%">
+                <thead class="thead">
                     <tr>
                         <th>Name</th>
                         <th>Active</th>
@@ -39,7 +39,7 @@
                         <td>{{ss.sensorName}}</td>
                         <td>{{ss.active}}</td>
                         
-                        <td><button v-on:click="Switchtruefalse(ss.sensorId)" class="btn btn-success">switch</button></td>
+                        <td><button v-on:click="Switchtruefalse(ss.sensorId)" class="btn btn-table">switch</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -49,7 +49,7 @@
             <button class="btn btn-success" v-on:click="HideMotionTable()" id="hideTableButton">Hide motions</button>
             <button class="btn btn-success" v-on:click="GetAllMotions()" id="showTableButton">Show motions</button>
             <table id="pirListe" v-if="motions.length" class="table table-dark table-striped" style="width: 50%">
-                <thead class="thead-dark">
+                <thead class="thead">
                     <tr>
                         <th>Name</th>
                         <th>Status</th>
