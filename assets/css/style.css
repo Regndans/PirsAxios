@@ -20,7 +20,7 @@ body{
 .jumbotron{
     background-color: var(--primaryBlue);
     color: var(--darkPurple);
-    padding-left: 0.5em;
+    padding-left: 1%;
 }
 
 h1, h2, h3{
@@ -31,6 +31,7 @@ h1, h2, h3{
     background-color: var(--primaryBlue);
     vertical-align: middle;
     margin-top: 0.2em;
+    min-width: 70%;
 }
 
 tr th {
@@ -64,7 +65,7 @@ tr:nth-child(even){
 }
 
 #app{
-    padding-left: 0.5em;
+    padding-left: 1%;
 }
 
 
