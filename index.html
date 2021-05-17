@@ -23,8 +23,19 @@
     </div>
     <div id="app">
         <div id="Timer">
+            <h3>start time</h3>
             <input type="datetime-local" name="timerStart" id="timerStart" v-model="timerStart">
+            <br>
+            <br>
+            <br>
+            <h3>end time</h3>
             <input type="datetime-local" name="timerEndReal" id="timerEndReal" v-model="timerEndReal">
+            <br>
+            <button v-on:Click="PutTimes()" class="btn">Gem</button>
+            <br>
+            {{FormatTime(timers[0].activeStart)}}
+            <br>
+            {{FormatTime(timers[0].activeEnd)}}
         </div>
         <h2>Sensors</h2>
         <div id="Sensors">
