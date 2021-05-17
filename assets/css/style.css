@@ -31,7 +31,8 @@ h1, h2, h3{
     background-color: var(--primaryBlue);
     vertical-align: middle;
     margin-top: 0.2rem;
-    min-width: 70%;
+    min-width: 50%;
+    max-width: 50%;
 }
 
 tr th {

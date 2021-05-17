@@ -163,7 +163,7 @@ Vue.createApp({
         FormatTime(time) {
             date = new Date(time).toLocaleDateString("en-DK");
             time = new Date(time).toLocaleTimeString("en-DK").replace(".", ":").substr(0, 5)
-            return date + " kl. " + time
+            return date + " at " + time
         },
     }
 
