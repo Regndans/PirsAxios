@@ -35,12 +35,14 @@
                     </thead>
                     <tr>
                         <td> <input type="datetime-local" name="timerStart" id="timerStart" v-model="timerStart"></td>
-                        <td><input type="datetime-local" name="timerEndReal" id="timerEndReal" v-model="timerEndReal"></td>
+                        <td><input type="datetime-local" name="timerEndReal" id="timerEndReal" v-model="timerEndReal">
+                        </td>
                         <td><button id="GemTid" v-on:Click="PutTimes()" class="btn">Save Timespan</button></td>
                     </tr>
                 </tbody>
             </table>
-            <p>Sensors activated during following timespan {{FormatTime(timers[0].activeStart)}} to {{FormatTime(timers[0].activeEnd)}}</p>
+            <p>Sensors activated during following timespan {{FormatTime(timers[0].activeStart)}} to
+                {{FormatTime(timers[0].activeEnd)}}</p>
         </div>
         <h2>Sensors</h2>
         <div id="Sensors">
@@ -69,6 +71,11 @@
             <h2>Motion Detections</h2>
             <button class="btn" v-on:click="HideMotionTable()" id="hideTableButton">Hide motions</button>
             <button class="btn" v-on:click="GetAllMotions()" id="showTableButton">Show motions</button>
+            <select id="MotionNames" v-model="sensName" @change="GetInputFromMotionnames()">
+                <option value="All">All</option>
+                <option v-for="(nn,i) in sensors">{{DetermineName(nn.sensorId)}}</option>
+            </select>
+            <br>
             <table id="pirListe" v-if="motions.length" class="table table-dark table-striped">
                 <thead class="thead">
                     <tr>

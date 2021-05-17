@@ -1,4 +1,4 @@
-const motionUrl = "https://restsense.azurewebsites.net/api/Motion/"
+const motionUrl = "https://restsense.azurewebsites.net/api/Motion"
 const sensorUrl = "https://restsense.azurewebsites.net/api/Sensor/"
 const timerUrl = "https://restsense.azurewebsites.net/api/Timer/"
 
@@ -13,6 +13,8 @@ Vue.createApp({
             timerEnd: null,
             timerEndReal: null,
             putData: null,
+            motionName: null,
+            sensName: 'All',
         }
     },
 
@@ -27,6 +29,7 @@ Vue.createApp({
     },
 
     methods: {
+        //#region Get Methods
         // gets all motions
         GetAllMotions() {
             this.HelperGetMotions(motionUrl)
@@ -49,6 +52,15 @@ Vue.createApp({
                 alert(ex.message)
             }
         },
+        GetMotionsBySensorId(id) {
+            this.HelperGetMotions(motionUrl + "?sensorId=" + id)
+        },
+        GetInputFromMotionnames() {
+            this.DetermineId(this.sensName)
+            if (this.sensName == "All") {this.GetAllMotions()}
+            else {
+            this.HelperGetMotions(motionUrl + "?sensorId=" + this.motionName)
+        }},
         // method for getting sensors based on url
         async HelperGetSensors(url) {
             try {
@@ -66,6 +78,19 @@ Vue.createApp({
                 alert(ex.message)
             }
         },
+        //method to get a single sensor
+        async HelperGetSensor(url, id) {
+            try {
+                const reponse = await axios.get(url + id)
+                this.getdata = await reponse.data
+            } catch (ex) {
+                alert(ex.message)
+            }
+        },
+        //#endregion Get Methods
+
+        //#region SensorSwitching
+
         // method for switching active on/off 
         async Switchtruefalse(id) {
             try {
@@ -113,13 +138,15 @@ Vue.createApp({
             }
             this.HelperGetSensors(sensorUrl)
         },
-        //method to get a single sensor
-        async HelperGetSensor(url, id) {
-            try {
-                const reponse = await axios.get(url + id)
-                this.getdata = await reponse.data
-            } catch (ex) {
-                alert(ex.message)
+        //#endregion SensorSwitching
+            
+        //Method for determining motions sensorId
+        DetermineId(sensName) {
+            for (let x of this.sensors){
+                if (sensName == x.sensorName) {
+                    this.motionName = x.sensorId
+                    return x.sensorId
+                }
             }
         },
         //Method for determining name of sensor
@@ -129,21 +156,8 @@ Vue.createApp({
                     return x.sensorName
                 }
             }
-            /*
-            this.sensors.forEach(element => {
-                if (sensid == element.sensorId) {
-                    return element.sensorName
-                }
-            });
-            /*
-            for (let index = 0; index < this.sensors.length; index++) {
-                const element = this.sensors[index];
-                if (sensid == element.sensorId) {
-                    return element.sensorName
-                }
-            }
-            */
         },
+        //Method for updating the timer table
         async PutTimes() {
             try {
                 this.timers[0].activeStart = this.timerStart
@@ -154,12 +168,12 @@ Vue.createApp({
                 alert(error)
             }
         },
-
+        //Method for changing the name from true/false to on/off
         SensorOnOff(on) {
             if (on) { return "On" }
             else return "Off"
         },
-
+        //Method for formatting time in motions table
         FormatTime(time) {
             date = new Date(time).toLocaleDateString("en-DK");
             time = new Date(time).toLocaleTimeString("en-DK").replace(".", ":").substr(0, 5)
