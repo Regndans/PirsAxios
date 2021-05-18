@@ -18,6 +18,7 @@ Vue.createApp({
             motionDate: '',
             motionMonth: '', 
             motionYear: '',
+            Name: '',
         }
     },
 
@@ -69,6 +70,10 @@ Vue.createApp({
             else {
             this.HelperGetMotions(motionUrl + "?sensorId=" + this.motionName)
         }},
+        //Determine what sensor to edit
+        GetSensorToEdit() {
+            this.DetermineId(this.Name)
+        },
         // method for getting sensors based on url
         async HelperGetSensors(url) {
             try {
@@ -147,7 +152,19 @@ Vue.createApp({
             this.HelperGetSensors(sensorUrl)
         },
         //#endregion SensorSwitching
-            
+        
+        async UpdateSensorName(id) {
+            for (let x of this.sensors){
+                if(id == x.sensorId) {
+                    x.sensorName = this.Name
+                    const response = await axios.put(sensorUrl + id + "?key=4000", x)
+                }
+            }
+        },
+        UpdateSensorNameHtml() {
+            this.UpdateSensorName(this.motionName)
+        },
+
         //Method for determining motions sensorId
         DetermineId(sensName) {
             for (let x of this.sensors){

@@ -67,6 +67,9 @@ tr:nth-child(even){
 .btn:focus{
     border-color: var(--lightPink);
 }
+.form-control{
+    width: 10rem;
+}
 
 #app{
     padding-left: 1%;
