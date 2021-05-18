@@ -78,7 +78,7 @@
             <h2>Motion Detections</h2>
             <button class="btn" v-on:click="HideMotionTable()" id="hideTableButton">Hide motions</button>
             <button class="btn" v-on:click="GetAllMotions()" id="showTableButton">Show motions</button>
-            <select class="form-control" id="MotionNames" v-model="sensName" @change="GetInputFromMotionnames()">
+            <select id="dropSortNames" class="form-control" id="MotionNames" v-model="sensName" @change="GetInputFromMotionnames()">
                 <option value="All">All</option>
                 <option v-for="(nn,i) in sensors">{{DetermineName(nn.sensorId)}}</option>
             </select>
