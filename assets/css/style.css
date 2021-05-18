@@ -49,6 +49,9 @@ tr:nth-child(even){
     margin-right: 0.2rem;
     color: white;
 }
+#dateFilterBtn {
+    margin-left: 00.2rem;
+}
 
 .btn-table{
     background-color: var(--secondaryDarkBlue);
@@ -64,10 +67,18 @@ tr:nth-child(even){
 .btn:focus{
     border-color: var(--lightPink);
 }
+.form-control{
+    width: 10rem;
+}
 
 #app{
     padding-left: 1%;
 }
+
+#motionDate, #motionMonth, #motionYear{
+    width: 5rem;
+}
+
 
 
 

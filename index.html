@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="Description" content="Enter your description here" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/vue@next"></script>
+    
     <title>Sense</title>
 </head>
 
@@ -66,15 +67,26 @@
                     </tr>
                 </tbody>
             </table>
+            <select class="form-control" v-model="Name" @change="DetermineId(Name)">
+                <option v-for="(nn,i) in sensors">{{DetermineName(nn.sensorId)}}</option>
+            </select>
+            <input class="form-control" v-model="Name" placeholder="edit me">
+            <button class="btn" v-on:click="UpdateSensorNameHtml()">Save name</button>
+            
         </div>
         <div id="Motions">
             <h2>Motion Detections</h2>
             <button class="btn" v-on:click="HideMotionTable()" id="hideTableButton">Hide motions</button>
             <button class="btn" v-on:click="GetAllMotions()" id="showTableButton">Show motions</button>
-            <select id="MotionNames" v-model="sensName" @change="GetInputFromMotionnames()">
+            <select class="form-control" id="MotionNames" v-model="sensName" @change="GetInputFromMotionnames()">
                 <option value="All">All</option>
                 <option v-for="(nn,i) in sensors">{{DetermineName(nn.sensorId)}}</option>
             </select>
+            <h4>Find by date: dd/mm/yyyy</h4>
+            <input type="number" id="motionDate" v-model="motionDate">
+            <input type="number" id="motionMonth" v-model="motionMonth">
+            <input type="number" id="motionYear" v-model="motionYear"> 
+            <button id="dateFilterBtn" class="btn" v-on:click="GetAllMotionsByDate()">Find by date</button>
             <br>
             <table id="pirListe" v-if="motions.length" class="table table-dark table-striped">
                 <thead class="thead">
