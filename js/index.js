@@ -15,6 +15,9 @@ Vue.createApp({
             putData: null,
             motionName: null,
             sensName: 'All',
+            motionDate: '',
+            motionMonth: '', 
+            motionYear: '',
         }
     },
 
@@ -32,7 +35,12 @@ Vue.createApp({
         //#region Get Methods
         // gets all motions
         GetAllMotions() {
-            this.HelperGetMotions(motionUrl)
+            this.HelperGetMotions(motionUrl) 
+        },
+        //gets all motions with date filtering
+        GetAllMotionsByDate() {
+            this.HelperGetMotions(motionUrl + "?date=" + this.motionDate + 
+                                    "&month=" + this.motionMonth + "&year=" + this.motionYear)
         },
         //gets all sensors
         GetAllSensors() {
