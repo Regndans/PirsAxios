@@ -80,8 +80,8 @@ tr:nth-child(even){
 }
 
 #ChangeNameCon {
-    
-    max-width:26%;
+    max-width: 31rem;
+    /* max-width:26%; */
     
 }
 
