@@ -67,11 +67,25 @@
                     </tr>
                 </tbody>
             </table>
-            <select id="dropChangeNames" class="form-control" v-model="Name" @change="DetermineId(Name)">
-                <option v-for="(nn,i) in sensors">{{DetermineName(nn.sensorId)}}</option>
-            </select>
-            <input id="inputChangeName" class="form-control" v-model="Name" placeholder="edit me">
-            <button id="buttonChangeName" class="btn" v-on:click="UpdateSensorNameHtml()">Save name</button>
+            
+                <div class="row no-gutters" id="ChangeNameCon">
+                    <div class="col-xl-4">
+                        <select id="dropChangeNames" class="form-control" v-model="Name" @change="DetermineId(Name)">
+                            <option disabled value="New name">Select Sensor</option>
+                            <option v-for="(nn,i) in sensors">{{DetermineName(nn.sensorId)}}</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-4">
+                        <input id="inputChangeName" class="form-control" v-model="Name" placeholder="edit me">
+                    </div>
+                    <div class="col-xl-4">
+                        <button id="buttonChangeName" class="btn" v-on:click="UpdateSensorNameHtml()">Save name</button>
+                    </div>
+                </div>
+            
+                
+                
+                
             
         </div>
         <div id="Motions">

@@ -18,7 +18,7 @@ Vue.createApp({
             motionDate: '',
             motionMonth: '', 
             motionYear: '',
-            Name: '',
+            Name: 'New name',
         }
     },
 
