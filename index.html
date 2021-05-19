@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/MicrosoftTeams-image.png" type="image/x-icon">
     
     <title>Sense</title>
 </head>
@@ -68,7 +69,7 @@
                 </tbody>
             </table>
             
-                <div class="row no-gutters" id="ChangeNameCon">
+                <div class="row" id="ChangeNameRow">
                     <div class="col-xl-4">
                         <select id="dropChangeNames" class="form-control" v-model="Name" @change="DetermineId(Name)">
                             <option disabled value="New name">Select Sensor</option>
@@ -81,12 +82,7 @@
                     <div class="col-xl-4">
                         <button id="buttonChangeName" class="btn" v-on:click="UpdateSensorNameHtml()">Save name</button>
                     </div>
-                </div>
-            
-                
-                
-                
-            
+                </div>         
         </div>
         <div id="Motions">
             <h2>Motion Detections</h2>
@@ -97,10 +93,26 @@
                 <option v-for="(nn,i) in sensors">{{DetermineName(nn.sensorId)}}</option>
             </select>
             <h4>Find by date: dd/mm/yyyy</h4>
-            <input type="number" id="motionDate" v-model="motionDate">
-            <input type="number" id="motionMonth" v-model="motionMonth">
-            <input type="number" id="motionYear" v-model="motionYear"> 
-            <button id="dateFilterBtn" class="btn" v-on:click="GetAllMotionsByDate()">Find by date</button>
+
+            <div class="row" id="SearchByDateRow">
+                <div class="col-xl-2">
+                    <input class="form-control" type="number" id="motionDate" v-model="motionDate">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="number" id="motionMonth" v-model="motionMonth">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="number" id="motionYear" v-model="motionYear"> 
+                </div>
+                <div class="col-xl-6">
+                    <button id="dateFilterBtn" class="btn" v-on:click="GetAllMotionsByDate()">Find by date</button>
+                </div>
+            </div>
+
+            
+            
+            
+            
             <br>
             <table id="pirListe" v-if="motions.length" class="table table-dark table-striped">
                 <thead class="thead">
