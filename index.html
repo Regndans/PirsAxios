@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    
+    <link rel="shortcut icon" href="assets/MicrosoftTeams-image.png" type="image/x-icon">
+
     <title>Sense</title>
 </head>
 
@@ -23,28 +24,28 @@
         <p>Group project made for Gruppe Blå</p>
     </div>
     <div id="app">
-        <div id="Timer">
-            <h2>Timer</h2>
+        <h2>Timer</h2>
+        <div id="Timer" class="table-responsive">         
             <table class="table table-dark">
-                <tbody>
-                    <thead>
-                        <tr>
-                            <th>Start time</th>
-                            <th>End time</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                <thead>
                     <tr>
-                        <td> <input type="datetime-local" name="timerStart" id="timerStart" v-model="timerStart"></td>
+                        <th>Start time</th>
+                        <th>End time</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="datetime-local" name="timerStart" id="timerStart" v-model="timerStart"></td>
                         <td><input type="datetime-local" name="timerEndReal" id="timerEndReal" v-model="timerEndReal">
                         </td>
                         <td><button id="GemTid" v-on:Click="PutTimes()" class="btn">Save Timespan</button></td>
                     </tr>
                 </tbody>
-            </table>
-            <p>Sensors activated during following timespan {{FormatTime(timers[0].activeStart)}} to
-                {{FormatTime(timers[0].activeEnd)}}</p>
+            </table>   
         </div>
+        <p>Sensors activated during following timespan {{FormatTime(timers[0].activeStart)}} to
+            {{FormatTime(timers[0].activeEnd)}}</p>
         <h2>Sensors</h2>
         <div id="Sensors">
             <button id="onButton" v-on:click="TurnSensorsOn()" class="btn">Turn all sensors on</button>
@@ -67,40 +68,52 @@
                     </tr>
                 </tbody>
             </table>
-            
-                <div class="row no-gutters" id="ChangeNameCon">
-                    <div class="col-xl-4">
-                        <select id="dropChangeNames" class="form-control" v-model="Name" @change="DetermineId(Name)">
-                            <option disabled value="New name">Select Sensor</option>
-                            <option v-for="(nn,i) in sensors">{{DetermineName(nn.sensorId)}}</option>
-                        </select>
-                    </div>
-                    <div class="col-xl-4">
-                        <input id="inputChangeName" class="form-control" v-model="Name" placeholder="edit me">
-                    </div>
-                    <div class="col-xl-4">
-                        <button id="buttonChangeName" class="btn" v-on:click="UpdateSensorNameHtml()">Save name</button>
-                    </div>
+
+            <div class="row" id="ChangeNameRow">
+                <div class="col-xl-4">
+                    <select id="dropChangeNames" class="form-control" v-model="Name" @change="DetermineId(Name)">
+                        <option disabled value="New name">Select Sensor</option>
+                        <option v-for="(nn,i) in sensors">{{DetermineName(nn.sensorId)}}</option>
+                    </select>
                 </div>
-            
-                
-                
-                
-            
+                <div class="col-xl-4">
+                    <input id="inputChangeName" class="form-control" v-model="Name" placeholder="edit me">
+                </div>
+                <div class="col-xl-4">
+                    <button id="buttonChangeName" class="btn" v-on:click="UpdateSensorNameHtml()">Save name</button>
+                </div>
+            </div>
         </div>
         <div id="Motions">
             <h2>Motion Detections</h2>
             <button class="btn" v-on:click="HideMotionTable()" id="hideTableButton">Hide motions</button>
             <button class="btn" v-on:click="GetAllMotions()" id="showTableButton">Show motions</button>
-            <select id="dropSortNames" class="form-control" id="MotionNames" v-model="sensName" @change="GetInputFromMotionnames()">
+            <select id="dropSortNames" class="form-control" id="MotionNames" v-model="sensName"
+                @change="GetInputFromMotionnames()">
                 <option value="All">All</option>
                 <option v-for="(nn,i) in sensors">{{DetermineName(nn.sensorId)}}</option>
             </select>
             <h4>Find by date: dd/mm/yyyy</h4>
-            <input type="number" id="motionDate" v-model="motionDate">
-            <input type="number" id="motionMonth" v-model="motionMonth">
-            <input type="number" id="motionYear" v-model="motionYear"> 
-            <button id="dateFilterBtn" class="btn" v-on:click="GetAllMotionsByDate()">Find by date</button>
+
+            <div class="row" id="SearchByDateRow">
+                <div class="col-xl-2">
+                    <input class="form-control" type="number" id="motionDate" v-model="motionDate">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="number" id="motionMonth" v-model="motionMonth">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="number" id="motionYear" v-model="motionYear">
+                </div>
+                <div class="col-xl-6">
+                    <button id="dateFilterBtn" class="btn" v-on:click="GetAllMotionsByDate()">Find by date</button>
+                </div>
+            </div>
+
+
+
+
+
             <br>
             <table id="pirListe" v-if="motions.length" class="table table-dark table-striped">
                 <thead class="thead">

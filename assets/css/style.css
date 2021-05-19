@@ -79,10 +79,12 @@ tr:nth-child(even){
     width: 5rem;
 }
 
-#ChangeNameCon {
+#ChangeNameRow {
     max-width: 31rem;
     /* max-width:26%; */
-    
+}
+#SearchByDateRow{
+    max-width: 31rem;
 }
 
 
