@@ -100,16 +100,16 @@
             <h4>Find by date: dd/mm/yyyy</h4>
 
             <div class="row" id="SearchByDateRow">
-                <div class="col-xl-2">
+                <div class="col-2">
                     <input class="form-control" type="number" id="motionDate" v-model="motionDate">
                 </div>
-                <div class="col-xl-2">
+                <div class="col-2">
                     <input class="form-control" type="number" id="motionMonth" v-model="motionMonth">
                 </div>
-                <div class="col-xl-2">
+                <div class="col-2">
                     <input class="form-control" type="number" id="motionYear" v-model="motionYear">
                 </div>
-                <div class="col-xl-6">
+                <div class="col-6">
                     <button id="dateFilterBtn" class="btn" v-on:click="GetAllMotionsByDate()">Find by date</button>
                 </div>
             </div>
