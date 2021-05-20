@@ -20,8 +20,8 @@ body{
 .jumbotron{
     background-color: var(--primaryBlue);
     color: var(--darkPurple);
-    padding-left: 1%;
 }
+
 
 h1, h2, h3{
     color: var(--darkPurple);
@@ -32,7 +32,7 @@ h1, h2, h3{
     vertical-align: middle;
     margin-top: 0.2rem;
     min-width: 50%;
-    max-width: 50%;
+    max-width: 70%;
 }
 
 tr th {
@@ -49,9 +49,9 @@ tr:nth-child(even){
     margin-right: 0.2rem;
     color: white;
 }
-#dateFilterBtn {
+/* #dateFilterBtn {
     margin-left: 00.2rem;
-}
+} */
 
 .btn-table{
     background-color: var(--secondaryDarkBlue);
@@ -71,9 +71,34 @@ tr:nth-child(even){
     width: 10rem;
 }
 
-#app{
-    padding-left: 1%;
+.col-xl-4{
+    margin: 0;
 }
+
+
+@media only screen and (max-width: 600px) {
+    #app {
+        margin-left: 1%;
+      }
+    .jumbotron{
+      padding-left: 1%;
+    }  
+
+  }
+
+  @media only screen and (min-width: 601px) {
+    #app {
+        margin-left: 10%;
+      }
+    .jumbotron{
+        padding-left: 10%;
+    }
+
+  }
+
+  /* #app{
+      margin-left: 0%;
+  } */
 
 #motionDate, #motionMonth, #motionYear{
     width: 5rem;
