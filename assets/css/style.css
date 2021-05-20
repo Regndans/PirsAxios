@@ -11,7 +11,10 @@
     
 }
 
-/* #214F69 */
+*{
+    margin: 0;
+    padding: 0;
+}
 
 body{
     background-color: var(--bgColour);
@@ -30,7 +33,6 @@ h1, h2, h3{
 .table{
     background-color: var(--primaryBlue);
     vertical-align: middle;
-    margin-top: 0.2rem;
 }
 
 tr th {
@@ -46,10 +48,16 @@ tr:nth-child(even){
     border-color: var(--darkPurple);
     margin-right: 0.2rem;
     color: white;
+    margin-bottom: 0.2rem;
 }
-/* #dateFilterBtn {
-    margin-left: 00.2rem;
-} */
+
+.input-group{
+    max-width: 30rem;
+}
+
+.input-group .btn{
+    margin: 0;
+}
 
 .btn-table{
     background-color: var(--secondaryDarkBlue);
@@ -58,19 +66,17 @@ tr:nth-child(even){
     margin-right: 0;
 }
 
-.btn:hover{
-    background-color: var(--lightPink);
-    border-color: var(--purple);
-}
-.btn:focus{
-    border-color: var(--lightPink);
-}
-.form-control{
+.btn-main{
     width: 10rem;
 }
 
-.col-xl-4{
-    margin: 0;
+.btn:hover{
+    background-color: var(--lightPink);
+    border-color: var(--purple);
+    color: white;
+}
+.btn:focus{
+    border-color: var(--lightPink);
 }
 
 
@@ -96,27 +102,11 @@ tr:nth-child(even){
         padding-left: 10%;
     }
     .table{
-        min-width: 50%;
+        min-width: 30rem;
         max-width: 70%;
     }
 
   }
-
-  /* #app{
-      margin-left: 0%;
-  } */
-
-#motionDate, #motionMonth, #motionYear{
-    width: 5rem;
-}
-
-#ChangeNameRow {
-    max-width: 31rem;
-    /* max-width:26%; */
-}
-#SearchByDateRow{
-    max-width: 31rem;
-}
 
 
 
