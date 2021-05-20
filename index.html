@@ -28,13 +28,35 @@
 
     <div id="app">
         <!--#region Timer-->
-        <h2>Timer</h2>
+
+        <!-- <div class="grid-main">
+            <div class="grid grid-header">
+                <div>Activate at</div>
+                <div>Deactivate at</div>
+                <div>empty</div>
+            </div>
+
+            <div class="grid grid-body">
+                <div>
+                    <input type="datetime-local" name="timerStart" id="timerStart" v-model="timerStart">
+                </div>
+                <div>
+                    <input type="datetime-local" name="timerEndReal" id="timerEndReal" v-model="timerEndReal">
+                </div>
+                <div>
+                    <button id="GemTid" v-on:Click="PutTimes()" class="btn btn-table">Save Timespan</button>
+                </div>
+            </div> -->
+
+
+        <!-- </div> -->
+
         <div id="Timer" class="table-responsive">
             <table class="table table-dark">
                 <thead>
                     <tr>
-                        <th>Start time</th>
-                        <th>End time</th>
+                        <th>Activate at</th>
+                        <th>Deactivate at</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -44,15 +66,16 @@
                         </td>
                         <td><input type="datetime-local" name="timerEndReal" id="timerEndReal" v-model="timerEndReal">
                         </td>
-                        <td><button id="GemTid" v-on:Click="PutTimes()" class="btn">Save Timespan</button></td>
+                        <td><button id="GemTid" v-on:Click="PutTimes()" class="btn btn-table">Save Timespan</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <p>Sensors activated during following timespan {{FormatTime(timers[0].activeStart)}} to
+        <p>Sensors activative during following timespan: {{FormatTime(timers[0].activeStart)}} till
             {{FormatTime(timers[0].activeEnd)}}</p>
         <!--#endregion-->
-<br/>
+        <br />
         <!--#region Sensors-->
         <h2>Sensors</h2>
         <div id="Sensors">
@@ -76,7 +99,7 @@
                     </tr>
                 </tbody>
             </table>
-            
+
             <div class="input-group mb-3">
                 <select id="dropChangeNames" class="form-control gridItem" v-model="Name" @change="DetermineId(Name)">
                     <option disabled value="New name">Select Sensor</option>
