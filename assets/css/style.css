@@ -74,7 +74,7 @@ tr:nth-child(even){
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 710px) {
     #app {
         margin-left: 1%;
       }
@@ -88,7 +88,7 @@ tr:nth-child(even){
 
   }
 
-  @media only screen and (min-width: 601px) {
+  @media only screen and (min-width: 711px) {
     #app {
         margin-left: 10%;
       }
