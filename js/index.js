@@ -23,7 +23,7 @@ Vue.createApp({
     },
 
 
-
+    // Kører ved load af siden
     async created() {
         console.log("Created method called")
         this.HelperGetMotions(motionUrl)
@@ -61,14 +61,16 @@ Vue.createApp({
                 alert(ex.message)
             }
         },
+        //Gets motions by specific sensor id
         GetMotionsBySensorId(id) {
             this.HelperGetMotions(motionUrl + "?sensorId=" + id)
         },
+        //Returns list of motions by sensors name
         GetInputFromMotionnames() {
             this.DetermineId(this.sensName)
             if (this.sensName == "All") {this.GetAllMotions()}
             else {
-            this.HelperGetMotions(motionUrl + "?sensorId=" + this.motionName)
+            this.GetMotionsBySensorId(this.motionName)
         }},
         //Determine what sensor to edit
         GetSensorToEdit() {
@@ -83,6 +85,7 @@ Vue.createApp({
                 alert(ex.message)
             }
         },
+        //Gets the dates where sensors needs to be active
         async HelperGetTimer(url) {
             try {
                 const reponse = await axios.get(url)
@@ -152,7 +155,10 @@ Vue.createApp({
             this.HelperGetSensors(sensorUrl)
         },
         //#endregion SensorSwitching
-        
+
+        //#region Other methods
+
+        //Method to put sensor
         async UpdateSensorName(id) {
             for (let x of this.sensors){
                 if(id == x.sensorId) {
@@ -161,6 +167,7 @@ Vue.createApp({
                 }
             }
         },
+        //Method for calling above method in html
         UpdateSensorNameHtml() {
             this.UpdateSensorName(this.motionName)
         },
@@ -205,5 +212,7 @@ Vue.createApp({
             return date + " at " + time
         },
     }
+
+    //#endregion Other methods
 
 }).mount("#app")

@@ -50,7 +50,7 @@
 
 
         <!-- </div> -->
-
+            <!-- Vælg periode at sensor SKAL være aktiv -->
         <div id="Timer" class="table-responsive">
             <table class="table table-dark">
                 <thead>
@@ -79,8 +79,10 @@
         <!--#region Sensors-->
         <h2>Sensors</h2>
         <div id="Sensors">
+            <!-- Knapper til at tænde og slukke sensors -->
             <button id="onButton" v-on:click="TurnSensorsOn()" class="btn btn-main">Turn all sensors on</button>
             <button id="offButton" v-on:click="TurnSensorsOff()" class="btn btn-main">Turn all sensors off</button>
+            <!-- Table med sensorer -->
             <table id="sensorList" v-if="sensors.length" class="table table-dark table-stribed">
                 <thead class="thead">
                     <tr>
@@ -99,7 +101,7 @@
                     </tr>
                 </tbody>
             </table>
-
+            <!-- Select og input til at ændre navn -->
             <div class="input-group mb-3">
                 <select id="dropChangeNames" class="form-control gridItem" v-model="Name" @change="DetermineId(Name)">
                     <option disabled value="New name">Select Sensor</option>
@@ -116,6 +118,7 @@
         <!-- #region Motions-->
         <div id="Motions">
             <h2>Motion Detections</h2>
+            <!-- Select navn at filtrere efter -->
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Filter by sensor</span>
@@ -126,6 +129,7 @@
                     <option v-for="(nn,i) in sensors">{{DetermineName(nn.sensorId)}}</option>
                 </select>
             </div>
+            <!-- Filtrer efter dato -->
             <div class="input-group mb-3">
                 <input class="form-control gridItem" type="number" id="motionDate" v-model="motionDate"
                     placeholder="dd">
@@ -138,7 +142,7 @@
                     v-on:click="GetAllMotionsByDate()">Find by
                     date</button>
             </div>
-
+            <!-- Skjul eller vis motion table -->
             <button class="btn btn-main" v-on:click="HideMotionTable()" id="hideTableButton">Hide all motions</button>
             <button class="btn btn-main" v-on:click="GetAllMotions()" id="showTableButton">Show all motions</button>
             <table id="pirListe" v-if="motions.length" class="table table-dark table-striped">
